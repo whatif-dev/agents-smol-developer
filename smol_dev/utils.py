@@ -3,11 +3,9 @@ import shutil
 
 
 def generate_folder(folder_path: str):
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-    else:
+    if os.path.exists(folder_path):
         shutil.rmtree(folder_path)
-        os.makedirs(folder_path)
+    os.makedirs(folder_path)
 
 
 def write_file(file_path: str, content: str):

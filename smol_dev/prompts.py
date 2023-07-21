@@ -56,8 +56,7 @@ def specify_file_paths(prompt: str, plan: str, model: str = 'gpt-3.5-turbo-0613'
             },
         ],
     )
-    result = file_paths.from_response(completion)
-    return result
+    return file_paths.from_response(completion)
 
 
 def plan(prompt: str, stream_handler: Optional[Callable[[bytes], None]] = None, model: str='gpt-3.5-turbo-0613', extra_messages: List[Any] = []):
@@ -94,8 +93,7 @@ def plan(prompt: str, stream_handler: Optional[Callable[[bytes], None]] = None, 
                 print("\nstream_handler error:", err)
                 print(chunk_message)
     if stream_handler and stream_handler.onComplete: stream_handler.onComplete('done')
-    full_reply_content = "".join([m.get("content", "") for m in collected_messages])
-    return full_reply_content
+    return "".join([m.get("content", "") for m in collected_messages])
 
 
 @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
